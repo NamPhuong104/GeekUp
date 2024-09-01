@@ -1,12 +1,70 @@
-import Header from '../home/Header';
-import Homepage from '../page/Homepage';
+import React, { useState } from 'react';
+import { Layout, Button, theme, Typography } from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import Sidebar from '../home/Header'; // Correct import path
+import { Outlet, useLocation } from 'react-router-dom';
 
-const Layout = () => {
+const { Header } = Layout;
+const { Title } = Typography;
+
+const LayoutComponent = () => {
+  const [collapsed, setCollapsed] = useState(false);
+  const { pathname } = useLocation();
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
+  // Map route paths to page names
+  const getPageName = (path) => {
+    switch (path) {
+      case '/customers':
+        return 'Customers';
+      case '/bank-accounts':
+        return 'Bank Accounts';
+      case '/cards':
+        return 'Cards';
+      default:
+        return 'Home'; // Default page name
+    }
+  };
+
+  const pageName = getPageName(pathname);
+
   return (
-    <main>
-      <Header />
-      <Homepage />
-    </main>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sidebar collapsed={collapsed} />
+      <Layout style={{ marginLeft: collapsed ? 0 : 0 }}>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
+            <Title level={3} style={{ margin: '0 16px' }}>
+              {pageName}
+            </Title>
+          </div>
+        </Header>
+        <Layout style={{ padding: '24px 16px', background: colorBgContainer }}>
+          <Outlet />
+        </Layout>
+      </Layout>
+    </Layout>
   );
 };
-export default Layout;
+
+export default LayoutComponent;

@@ -1,11 +1,31 @@
-const Header = () => {
+import React from 'react';
+import { Menu, Layout } from 'antd'; // Import Layout from 'antd'
+import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+
+const { Sider } = Layout; // Destructure Sider from Layout
+
+const Sidebar = ({ collapsed }) => {
   return (
-    <div className="col">
-      <div className="col-6">
-        <p>Logo</p>
-      </div>
-    </div>
+    <Sider trigger={null} collapsible collapsed={collapsed}>
+      <div className="demo-logo-vertical" />
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={['1']}
+      >
+        <Menu.Item key="1" icon={<UserOutlined />}>
+          <Link to="/customers">Customers</Link>
+        </Menu.Item>
+        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+          <Link to="/bank-accounts">Bank Accounts</Link>
+        </Menu.Item>
+        <Menu.Item key="3" icon={<UploadOutlined />}>
+          <Link to="/cards">Cards</Link>
+        </Menu.Item>
+      </Menu>
+    </Sider>
   );
 };
 
-export default Header;
+export default Sidebar;

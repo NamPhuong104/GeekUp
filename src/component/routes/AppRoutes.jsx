@@ -1,5 +1,6 @@
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from '../layout/Layout';
+import LayoutComponent from '../layout/Layout';
 import Customers from '../page/Customers';
 import BankAccounts from '../page/BankAccounts';
 import Cards from '../page/Cards';
@@ -7,19 +8,23 @@ import Cards from '../page/Cards';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <LayoutComponent />,
     children: [
       {
-        path: '/customers',
+        path: 'customers',
         element: <Customers />,
       },
       {
-        path: '/bank-accounts',
+        path: 'bank-accounts',
         element: <BankAccounts />,
       },
       {
-        path: '/cards',
+        path: 'cards',
         element: <Cards />,
+      },
+      {
+        path: '*',
+        element: <div>404 Not Found</div>, // Optional: handle unknown routes
       },
     ],
   },
