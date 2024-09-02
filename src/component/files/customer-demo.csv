@@ -1,0 +1,6 @@
+name,email,customerId,firstName,lastName,phoneNumber,address,identityCard,customerSegmentId,dob
+Alice Johnson,alice.johnson@example.com,C001,Alice,Johnson,1234567890,789 Maple St Springfield,ID123456789,member,1980-12-25
+Bob Smith,bob.smith@example.com,C002,Bob,Smith,2345678901,456 Oak St Springfield,ID987654321,gold,1990-03-15
+Charlie Brown,charlie.brown@example.com,C003,Charlie,Brown,3456789012,123 Birch St Springfield,ID135792468,member,1985-06-30
+Daisy Miller,daisy.miller@example.com,C004,Daisy,Miller,456565767, Pine St Springfield,ID246813579,gold,1992-11-05
+Eve Davis,eve.davis@example.com,C005,Eve,Davis,5678901234,789 Cedar St Springfield,ID357924680,member,1988-09-12

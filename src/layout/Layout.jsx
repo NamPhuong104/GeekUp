@@ -23,6 +23,10 @@ const LayoutComponent = () => {
         return 'Bank Accounts';
       case '/cards':
         return 'Cards';
+      case '/customer-segments':
+        return 'Segments';
+      case '/nice-accounts':
+        return 'Nice accounts';
       case '/bank-cards':
         return 'Bank Cards';
       case '/online-accounts':
