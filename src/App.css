@@ -127,3 +127,7 @@ table {
   margin-top: 16px; 
 }
 
+.ant-menu-item a {
+  text-decoration: none; 
+}
+
