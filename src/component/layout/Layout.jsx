@@ -23,6 +23,12 @@ const LayoutComponent = () => {
         return 'Bank Accounts';
       case '/cards':
         return 'Cards';
+      case '/customer-segments':
+        return 'Segments';
+      case '/nice-accounts':
+        return 'Nice accounts';
+      case '/online-accounts':
+        return 'Online Accounts';
       default:
         return 'Home'; // Default page name
     }

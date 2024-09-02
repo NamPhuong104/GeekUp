@@ -4,6 +4,7 @@ import LayoutComponent from '../layout/Layout';
 import Customers from '../page/Customers';
 import BankAccounts from '../page/BankAccounts';
 import Cards from '../page/Cards';
+import CustomerSegments from '../page/CustomerSegments';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: 'cards',
         element: <Cards />,
+      },
+      {
+        path: 'customer-segments',
+        element: <CustomerSegments />,
       },
       {
         path: '*',
