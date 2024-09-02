@@ -1,8 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LayoutComponent from '../layout/Layout';
 import Customers from '../page/Customers';
-import BankAccounts from '../BankAccounts/BankAccounts';
-import Cards from '../page/Cards';
+import BankAccounts from '../component/BankAccounts/BankAccounts';
+import OnlineAccounts from '../component/OnlineAccounts/OnlineAccounts';
+import Cards from '../component/Cards/Cards';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
         element: <Cards />,
       },
       {
+        path: 'online-accounts',
+        element: <OnlineAccounts />,
+      },
+      {
         path: '*',
-        element: <div>404 Not Found</div>, // Optional: handle unknown routes
+        element: <div>404 Not Found</div>,
       },
     ],
   },

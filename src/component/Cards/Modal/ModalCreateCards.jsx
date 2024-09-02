@@ -1,4 +1,4 @@
-import { DatePicker, Form, Input, Modal, Select } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Modal, Row, Select } from 'antd';
 import locale from 'antd/es/date-picker/locale/vi_VN';
 
 const citizenIdentification = [
@@ -47,41 +47,63 @@ const fullName = [
   },
 ];
 
-function ModalUpdateBankAccount(props) {
-  const {
-    isUpdateModalOpen,
-    setIsUpdateModalOpen,
-    bankAccountUpdateData,
-    setBankAccountUpdateData,
-  } = props;
+const niceNumber = [
+  {
+    value: '111111111',
+    label: '111111111',
+  },
+  {
+    value: '222222222',
+    label: '222222222',
+  },
+  {
+    value: '123456789',
+    label: '123456789',
+  },
+  {
+    value: '444499999',
+    label: '444499999',
+  },
+  {
+    value: '234567777',
+    label: '1234567777',
+  },
+];
+
+function ModalCreateCards(props) {
+  const { isOpenCards, setIsOpenCards } = props;
   const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log(values);
-    setIsUpdateModalOpen(false);
-  };
-
-  const handleCloseUpdateModal = () => {
-    form.resetFields();
-    setIsUpdateModalOpen(false);
-    setBankAccountUpdateData(null);
-  };
 
   const randomNum = () => {
     return (
       Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000
     );
   };
+  const onCloseModal = () => {
+    setIsOpenCards(!isOpenCards);
+  };
 
+  const onFinish = (value) => {
+    console.log(value);
+    form.resetFields();
+    setIsOpenCards(false);
+  };
   return (
     <>
+      <Button
+        size="large"
+        type="primary"
+        onClick={() => setIsOpenCards(!isOpenCards)}
+      >
+        Tạo mới thẻ
+      </Button>
       <Modal
-        title="Cập nhật tài khoản"
+        title="Tạo mới thẻ"
         centered
-        open={isUpdateModalOpen}
+        open={isOpenCards}
         onOk={() => form.submit()}
-        onCancel={handleCloseUpdateModal}
-        okText="Cập nhật"
+        onCancel={onCloseModal}
+        okText="Lưu"
         cancelText="Hủy"
         width={500}
       >
@@ -100,6 +122,7 @@ function ModalUpdateBankAccount(props) {
               allowClear
               placeholder="Vui lòng chọn số căn cước công dân"
               optionFilterProp="label"
+              // showSearch
               options={citizenIdentification}
             />
           </Form.Item>
@@ -118,24 +141,25 @@ function ModalUpdateBankAccount(props) {
               showSearch
               placeholder="Vui lòng chọn họ và tên"
               optionFilterProp="label"
-              // showSearch
               options={fullName}
             />
           </Form.Item>
 
           <Form.Item
-            label="Email"
-            name="email"
+            label="Số thẻ"
+            name="cardNumber"
             rules={[
               {
                 required: true,
-                message: 'Vui lòng nhập email',
+                message: 'Vui lòng chọn số thẻ',
               },
             ]}
           >
-            <Input
-              placeholder="abc@gmail.com"
-              onChange={(e) => console.log(e.target.value)}
+            <Select
+              showSearch
+              placeholder="Vui lòng chọn số thẻ"
+              optionFilterProp="label"
+              options={niceNumber}
             />
           </Form.Item>
 
@@ -153,65 +177,44 @@ function ModalUpdateBankAccount(props) {
           </Form.Item>
 
           <Form.Item label="Số tài khoản" name="bankAccountNumber">
-            <Input
-              disabled
-              onChange={(e) => console.log(e.target.value)}
-              defaultValue={randomNum}
-            />
+            <Input disabled defaultValue={randomNum} />
           </Form.Item>
 
-          <Form.Item
-            label="Ngày sinh"
-            name="dateOfBirth"
-            rules={[
-              {
-                required: true,
-                message: 'Vui lòng ngày sinh',
-              },
-            ]}
-          >
-            <DatePicker locale={locale} format="DD/MM/YYYY" />
-          </Form.Item>
+          <Row gutter={[20, 16]}>
+            <Col span={12}>
+              <Form.Item
+                label="Ngày bắt đầu"
+                name="startDate"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng chọn ngày bắt đầu',
+                  },
+                ]}
+              >
+                <DatePicker locale={locale} format="DD/MM/YYYY" />
+              </Form.Item>
+            </Col>
 
-          <Form.Item
-            label="Địa chỉ"
-            name="address"
-            rules={[
-              {
-                required: true,
-                message: 'Vui lòng nhập địa chỉ',
-              },
-            ]}
-          >
-            <Input
-              placeholder="Nhập địa chỉ"
-              onChange={(e) => console.log(e.target.value)}
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="Phân khúc khách hàng"
-            name="customerSegmentType"
-            rules={[
-              {
-                required: true,
-                message: 'Vui lòng chọn phân khúc khách hàng',
-              },
-            ]}
-          >
-            <Select
-              placeholder="Vui lòng phân khúc khách hàng"
-              onChange={(value) => console.log(value)}
-              options={[
-                { value: 0, label: 'Ưu tiên' },
-                { value: 1, label: 'Thường' },
-              ]}
-            />
-          </Form.Item>
+            <Col span={12}>
+              <Form.Item
+                label="Ngày hết hạn"
+                name="endDate"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Vui lòng chọn ngày kết thúc',
+                  },
+                ]}
+              >
+                <DatePicker locale={locale} format="DD/MM/YYYY" />
+              </Form.Item>
+            </Col>
+          </Row>
         </Form>
       </Modal>
     </>
   );
 }
 
-export default ModalUpdateBankAccount;
+export default ModalCreateCards;

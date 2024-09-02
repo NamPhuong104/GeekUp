@@ -1,44 +1,45 @@
-import { useState } from 'react';
 import { Col, Flex, Row, Table } from 'antd';
-import ModalCreateBankAccount from './modal/ModalCreateBankAccount';
 import SearchInput from './SearchInput';
 import ActionButtons from '../../global/ActionButtons';
-import ViewBankAccountDrawer from './modal/ViewBankAccountDrawer';
-import ModalUpdateBankAccount from './modal/ModalUpdateBankAccount';
+import ModalCreateCards from './Modal/ModalCreateCards';
+import { useState } from 'react';
+import ViewCardDrawer from './Modal/ViewCardDrawer';
+import ModalUpdateCard from './Modal/ModalUpdateCard';
 
 const dataSource = [
   {
     key: '1',
-    bankAccountNumber: '11111111111',
+    phoneNumber: '0123456789',
     name: 'Nguyen Nam Phuong',
-    customerSegmentType: 'Ưu tiên',
+    cardNumber: '9999999999',
     citizenIdentification: '0123456789',
   },
   {
     key: '2',
-    bankAccountNumber: '11111111111',
+    phoneNumber: '0123456789',
     name: 'Nguyen Nam Phuong',
-    customerSegmentType: 'Ưu tiên',
+    cardNumber: '9999999999',
     citizenIdentification: '0123456789',
   },
 ];
-function BankAccounts() {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+function Cards() {
+  const [isOpenCards, setIsOpenCards] = useState(false);
   const [isViewDrawerOpen, setIsViewDrawerOpen] = useState(false);
-  const [bankAccountViewData, setBankAccountViewData] = useState(null);
+  const [cardViewData, setCardViewData] = useState(null);
 
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [bankAccountUpdateData, setBankAccountUpdateData] = useState(null);
+  const [cardUpdateData, setCardUpdateData] = useState(null);
 
   const handleModal = (modalType, value) => {
     if (modalType === 'create') {
       ////
     } else if (modalType === 'view' && value) {
       setIsViewDrawerOpen(true);
-      setBankAccountViewData(value);
+      setCardViewData(value);
     } else if (modalType === 'update' && value) {
       setIsUpdateModalOpen(true);
-      setBankAccountUpdateData(value);
+      setCardUpdateData(value);
     }
   };
 
@@ -46,9 +47,9 @@ function BankAccounts() {
 
   const columns = [
     {
-      title: 'Số tài khoản',
-      dataIndex: 'bankAccountNumber',
-      key: 'bankAccountNumber',
+      title: 'Số điện thoại',
+      dataIndex: 'phoneNumber',
+      key: 'phoneNumber',
       align: 'center',
       width: '15%',
       ellipsis: true,
@@ -62,9 +63,9 @@ function BankAccounts() {
       ellipsis: true,
     },
     {
-      title: 'Phân khúc khách hàng',
-      dataIndex: 'customerSegmentType',
-      key: 'customerSegmentType',
+      title: 'Số thẻ',
+      dataIndex: 'cardNumber',
+      key: 'cardNumber',
       align: 'center',
       width: '15%',
       ellipsis: true,
@@ -104,9 +105,9 @@ function BankAccounts() {
             style={{ padding: '10px 20px' }}
           >
             <SearchInput />
-            <ModalCreateBankAccount
-              isOpen={isCreateModalOpen}
-              setIsOpen={setIsCreateModalOpen}
+            <ModalCreateCards
+              isOpenCards={isOpenCards}
+              setIsOpenCards={setIsOpenCards}
             />
           </Flex>
         </Col>
@@ -117,20 +118,20 @@ function BankAccounts() {
           <Table columns={columns} dataSource={dataSource} />
         </Col>
       </Row>
-      <ViewBankAccountDrawer
+      <ViewCardDrawer
         isViewDrawerOpen={isViewDrawerOpen}
         setIsViewDrawerOpen={setIsViewDrawerOpen}
-        bankAccountViewData={bankAccountViewData}
-        setBankAccountViewData={setBankAccountViewData}
+        cardViewData={cardViewData}
+        setCardViewData={setCardViewData}
       />
-      <ModalUpdateBankAccount
+      <ModalUpdateCard
         isUpdateModalOpen={isUpdateModalOpen}
         setIsUpdateModalOpen={setIsUpdateModalOpen}
-        bankAccountUpdateData={bankAccountUpdateData}
-        setBankAccountUpdateData={setBankAccountUpdateData}
+        cardUpdateData={cardUpdateData}
+        setCardUpdateData={setCardUpdateData}
       />
     </>
   );
 }
 
-export default BankAccounts;
+export default Cards;
