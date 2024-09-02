@@ -72,7 +72,7 @@ function ModalCreateBankAccount({ isOpen, setIsOpen }) {
   };
   return (
     <>
-      <Button type="primary" onClick={() => setIsOpen(true)}>
+      <Button size="large" type="primary" onClick={() => setIsOpen(true)}>
         Tạo mới tài khoản
       </Button>
       <Modal
@@ -160,7 +160,7 @@ function ModalCreateBankAccount({ isOpen, setIsOpen }) {
             rules={[
               {
                 required: true,
-                message: 'Vui lòng ngày sinh',
+                message: 'Vui lòng chọn ngày sinh',
               },
             ]}
           >
