@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Form, Input, DatePicker, Button, notification, Select, Space, Row, Col, Upload } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { MinusCircleOutlined, PlusOutlined, UploadOutlined } from "@ant-design/icons";
-import Customer from "../entities/Customer";
+import Customer from "../component/entities/Customer";
 import moment from 'moment';
 
 const CustomerDetail = ({ visible, onClose, onSave, customer }) => {

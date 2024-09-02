@@ -29,6 +29,7 @@ const router = createBrowserRouter([
         path: 'customer-segments',
         element: <CustomerSegments />,
       },
+      {
         path: 'online-accounts',
         element: <OnlineAccounts />,
       },

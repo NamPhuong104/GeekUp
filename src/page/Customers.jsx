@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button, Row, Col, Table, Typography, Space, Modal, Tag, notification } from 'antd'; 
 import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import Customer from '../entities/Customer'; 
+import Customer from '../component/entities/Customer'; 
 import CustomerDetail from './CustomerDetail'; 
 
 const { Title } = Typography;
