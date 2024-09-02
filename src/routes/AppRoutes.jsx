@@ -7,6 +7,7 @@ import Cards from '../component/Cards/Cards';
 //import BankAccounts from '../page/BankAccounts';
 //import Cards from '../page/Cards';
 import CustomerSegments from '../page/CustomerSegments';
+import NiceAccountNumber from '../page/NiceAccountNumber';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'online-accounts',
         element: <OnlineAccounts />,
+      },
+      {
+        path: 'nice-accounts',
+        element: <NiceAccountNumber />,
       },
       {
         path: '*',

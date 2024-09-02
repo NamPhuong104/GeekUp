@@ -26,7 +26,7 @@ const LayoutComponent = () => {
       case '/customer-segments':
         return 'Segments';
       case '/nice-accounts':
-        return 'Nice accounts';
+        return 'Nice Account Number';
       case '/bank-cards':
         return 'Bank Cards';
       case '/online-accounts':
