@@ -1,0 +1,82 @@
+import { Button, Col, Popconfirm, Row, Tooltip } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEye,
+  faPenToSquare,
+  faTrashCan,
+} from '@fortawesome/free-regular-svg-icons';
+
+function ActionButtons(props) {
+  const { record, handleViewModal, handleUpdateModal } = props;
+  return (
+    <Row justify={'space-evenly'}>
+      {handleViewModal ? (
+        <Col>
+          <Tooltip title="Xem" placement="bottom">
+            <Button
+              className="action-buttons"
+              type="default"
+              size={'small'}
+              style={{
+                background: 'transparent',
+                borderColor: 'transparent',
+                color: '#448026',
+              }}
+              icon={<FontAwesomeIcon icon={faEye} />}
+              onClick={handleViewModal}
+            />
+          </Tooltip>
+        </Col>
+      ) : (
+        <></>
+      )}
+
+      {handleUpdateModal ? (
+        <Col>
+          <Tooltip title="Cập nhật" placement="bottom">
+            <Button
+              className="action-buttons"
+              type="default"
+              size={'small'}
+              style={{
+                background: 'transparent',
+                borderColor: 'transparent',
+                color: '#e3ba5b',
+              }}
+              icon={<FontAwesomeIcon icon={faPenToSquare} />}
+              onClick={handleUpdateModal}
+            />
+          </Tooltip>
+        </Col>
+      ) : (
+        <></>
+      )}
+
+      <Col>
+        <Tooltip title="Xóa" placement="bottom">
+          <Popconfirm
+            title="Bạn có chắc chắn muốn xóa ?"
+            // onConfirm={handleDeleteRecord}
+            okText="Đồng ý"
+            cancelText="Hủy"
+            placement="left"
+          >
+            <Button
+              className="action-buttons"
+              type="default"
+              size={'small'}
+              style={{
+                background: 'transparent',
+                borderColor: 'transparent',
+                color: 'red',
+              }}
+              icon={<FontAwesomeIcon icon={faTrashCan} />}
+            />
+          </Popconfirm>
+        </Tooltip>
+      </Col>
+    </Row>
+  );
+}
+
+export default ActionButtons;
