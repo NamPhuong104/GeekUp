@@ -1,8 +1,7 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LayoutComponent from '../layout/Layout';
 import Customers from '../page/Customers';
-import BankAccounts from '../page/BankAccounts';
+import BankAccounts from '../BankAccounts/BankAccounts';
 import Cards from '../page/Cards';
 
 const router = createBrowserRouter([

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout, Button, theme, Typography } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import Sidebar from '../home/Header'; // Correct import path
+import Sidebar from '../home/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 
 const { Header } = Layout;
@@ -11,7 +11,7 @@ const LayoutComponent = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { pathname } = useLocation();
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   // Map route paths to page names
