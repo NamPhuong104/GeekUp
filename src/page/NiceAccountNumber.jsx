@@ -17,6 +17,7 @@ import {
 } from "@ant-design/icons";
 import NiceAccountNumber from "../component/entities/NiceAccountNumber";
 import NiceAccountNumberDetail from "./NiceAccountNumberDetail";
+import { v4 as uuidv4 } from "uuid";
 
 const { Title } = Typography;
 
@@ -25,18 +26,16 @@ const NiceAccountNumbers = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingAccount, setEditingAccount] = useState(null);
   const [accountData, setAccountData] = useState([
-
     new NiceAccountNumber(
       "NA001",
-      "1234567890",
+      "111111111111",
       NiceAccountNumber.Status.ACTIVE,
       "2023-01-01T00:00:00Z",
       "2023-01-01T00:00:00Z"
     ),
-
     new NiceAccountNumber(
       "NA002",
-      "0987654321",
+      "55555555555",
       NiceAccountNumber.Status.INACTIVE,
       "2023-01-02T00:00:00Z",
       "2023-01-02T00:00:00Z"
@@ -106,7 +105,8 @@ const NiceAccountNumbers = () => {
       onOk: () => {
         setAccountData((prevData) =>
           prevData.filter(
-            (account) => account.niceAccountNumberId !== record.niceAccountNumberId
+            (account) =>
+              account.niceAccountNumberId !== record.niceAccountNumberId
           )
         );
         notification.success({
@@ -155,6 +155,70 @@ const NiceAccountNumbers = () => {
     setEditingAccount(null);
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        const rows = text.split("\n").filter((row) => row.trim() !== "");
+        const newAccounts = [];
+        let hasDuplicates = false;
+
+        rows.forEach((row, index) => {
+          const [niceAccountNumber] = row.split(",").map((cell) => cell.trim());
+          if (!niceAccountNumber) {
+            notification.error({
+              message: "Upload Error",
+              description: `Row ${index + 1} is invalid. Please check the file format.`,
+            });
+            hasDuplicates = true;
+            return;
+          }
+
+          if (
+            accountData.some(
+              (account) => account.niceAccountNumber === niceAccountNumber
+            ) ||
+            newAccounts.some(
+              (account) => account.niceAccountNumber === niceAccountNumber
+            )
+          ) {
+            hasDuplicates = true;
+            return;
+          }
+
+          newAccounts.push(
+            new NiceAccountNumber(
+              uuidv4(),
+              niceAccountNumber,
+              NiceAccountNumber.Status.INACTIVE,
+              new Date().toISOString(),
+              new Date().toISOString()
+            )
+          );
+        });
+
+        if (hasDuplicates) {
+          notification.error({
+            message: "Upload Failed",
+            description:
+              "The file contains duplicate account numbers. Please check the file and try again.",
+          });
+        } else {
+          setAccountData([...accountData, ...newAccounts]);
+          notification.success({
+            message: "Accounts Uploaded",
+            description:
+              "The nice account numbers have been added successfully.",
+          });
+        }
+      };
+
+      reader.readAsText(file);
+    }
+  };
+
   return (
     <div>
       <Row gutter={16} style={{ marginBottom: "16px" }}>
@@ -178,6 +242,20 @@ const NiceAccountNumbers = () => {
           >
             Add Account
           </Button>
+          <Button
+            type="default"
+            style={{ marginLeft: "8px" }}
+            onClick={() => document.getElementById("fileInput").click()}
+          >
+            Add File
+          </Button>
+          <input
+            type="file"
+            accept=".csv"
+            id="fileInput"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
         </Col>
       </Row>
 
@@ -188,7 +266,7 @@ const NiceAccountNumbers = () => {
       <Table
         dataSource={accountData}
         columns={columns}
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 100 }}
         rowKey="niceAccountNumberId"
         scroll={{ x: "max-content", y: 400 }}
       />

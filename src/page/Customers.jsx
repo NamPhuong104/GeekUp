@@ -216,7 +216,7 @@ const Customers = () => {
       <Table
         dataSource={customerData}
         columns={columns}
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 100 }}
         rowKey="id" // Make sure each row has a unique key
         scroll={{ x: 'max-content', y: 400 }} // Add horizontal and vertical scroll
       />
