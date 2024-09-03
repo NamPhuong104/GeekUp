@@ -15,6 +15,7 @@ const router = createBrowserRouter([
     element: <LayoutComponent />,
     children: [
       {
+        index: true,
         path: 'customers',
         element: <Customers />,
       },

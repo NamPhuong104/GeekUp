@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Layout, Button, theme, Typography } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import Sidebar from '../home/Header';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -51,6 +51,7 @@ const LayoutComponent = () => {
             justifyContent: 'space-between',
           }}
         >
+          <Navigate to="/customers" />
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Button
               type="text"
