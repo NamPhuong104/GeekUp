@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Layout, Button, theme, Typography } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import Sidebar from '../home/Header'; // Correct import path
-import { Outlet, useLocation } from 'react-router-dom';
+import Sidebar from '../home/Header';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -11,7 +11,7 @@ const LayoutComponent = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { pathname } = useLocation();
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   // Map route paths to page names
@@ -23,6 +23,14 @@ const LayoutComponent = () => {
         return 'Bank Accounts';
       case '/cards':
         return 'Cards';
+      case '/customer-segments':
+        return 'Segments';
+      case '/nice-accounts':
+        return 'Nice Account Number';
+      case '/bank-cards':
+        return 'Bank Cards';
+      case '/online-accounts':
+        return 'Online Accounts';
       default:
         return 'Home'; // Default page name
     }
@@ -43,6 +51,7 @@ const LayoutComponent = () => {
             justifyContent: 'space-between',
           }}
         >
+          <Navigate to="/customers" />
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Button
               type="text"
