@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Modal, Form, Input, DatePicker, Button, notification, Select, Space, Row, Col, Upload } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { MinusCircleOutlined, PlusOutlined, UploadOutlined } from "@ant-design/icons";
-import Customer from "../component/entities/Customer";
+import Customer from "../../../entities/Customer";
 import moment from 'moment';
 
-const CustomerDetail = ({ visible, onClose, onSave, customer }) => {
+const AddMultipleCustomerModal = ({ visible, onClose, onSave, customer }) => {
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
   const [parsedData, setParsedData] = useState([]);
@@ -287,4 +287,4 @@ const CustomerDetail = ({ visible, onClose, onSave, customer }) => {
   );
 };
 
-export default CustomerDetail;
+export default AddMultipleCustomerModal;

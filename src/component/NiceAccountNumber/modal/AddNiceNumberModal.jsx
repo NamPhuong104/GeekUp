@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Modal, Form, Input, Button, Select } from "antd";
 import { useForm } from "antd/es/form/Form";
-import NiceAccountNumber from "../component/entities/NiceAccountNumber";
+import NiceAccountNumber from "../../../entities/NiceAccountNumber";
 import { v4 as uuidv4 } from 'uuid';
 
 const { Option } = Select;
 
-const NiceAccountNumberDetail = ({ visible, onClose, onSave, account }) => {
+const AddNiceNumberModal = ({ visible, onClose, onSave, account }) => {
   const [form] = useForm();
   const isEditing = !!account; // Check if the form is in edit mode
 
@@ -80,4 +80,4 @@ const NiceAccountNumberDetail = ({ visible, onClose, onSave, account }) => {
   );
 };
 
-export default NiceAccountNumberDetail;
+export default AddNiceNumberModal;

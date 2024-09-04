@@ -15,8 +15,8 @@ import {
   EditOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import CustomerSegment from "../component/entities/CustomerSegment";
-import CustomerSegmentDetail from "./CustomerSegmentDetail";
+import CustomerSegment from "../../entities/CustomerSegment";
+import AddSegmentModal from "./modal/AddSegmentModal";
 
 const { Title } = Typography;
 
@@ -38,7 +38,7 @@ const CustomerSegments = () => {
       "2023-01-02T00:00:00Z",
       "2023-01-02T00:00:00Z"
     ),
-    // Add more sample data as needed
+    
   ]);
 
   // Table columns with edit and delete buttons
@@ -189,7 +189,7 @@ const CustomerSegments = () => {
         scroll={{ x: "max-content", y: 400 }} // Add horizontal and vertical scroll
       />
 
-      <CustomerSegmentDetail
+      <AddSegmentModal
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         onSave={handleSaveSegment}

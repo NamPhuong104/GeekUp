@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Form, Input, Button, notification, Select } from "antd";
 import { useForm } from "antd/es/form/Form";
-import CustomerSegment from "../component/entities/CustomerSegment";
+import CustomerSegment from '../../../entities/CustomerSegment';
 
-const CustomerSegmentDetail = ({ visible, onClose, onSave, segment }) => {
+const AddSegmentModal = ({ visible, onClose, onSave, segment }) => {
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
 
@@ -69,4 +69,4 @@ const CustomerSegmentDetail = ({ visible, onClose, onSave, segment }) => {
   );
 };
 
-export default CustomerSegmentDetail;
+export default AddSegmentModal;

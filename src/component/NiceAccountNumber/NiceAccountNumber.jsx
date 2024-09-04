@@ -15,8 +15,8 @@ import {
   EditOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import NiceAccountNumber from "../component/entities/NiceAccountNumber";
-import NiceAccountNumberDetail from "./NiceAccountNumberDetail";
+import NiceAccountNumber from "../../entities/NiceAccountNumber";
+import AddNiceNumberModal from "./modal/AddNiceNumberModal";
 import { v4 as uuidv4 } from "uuid";
 
 const { Title } = Typography;
@@ -271,7 +271,7 @@ const NiceAccountNumbers = () => {
         scroll={{ x: "max-content", y: 400 }}
       />
 
-      <NiceAccountNumberDetail
+      <AddNiceNumberModal
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         onSave={handleSaveAccount}

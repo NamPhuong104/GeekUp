@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LayoutComponent from '../layout/Layout';
-import Customers from '../page/Customers';
+import Customers from '../component/Customers/Customers';
 import BankAccounts from '../component/BankAccounts/BankAccounts';
 import OnlineAccounts from '../component/OnlineAccounts/OnlineAccounts';
 import Cards from '../component/Cards/Cards';
 //import BankAccounts from '../page/BankAccounts';
 //import Cards from '../page/Cards';
-import CustomerSegments from '../page/CustomerSegments';
-import NiceAccountNumber from '../page/NiceAccountNumber';
+//import CustomerSegments from '../page/CustomerSegments';
+import CustomerSegments from '../component/CustomerSegments/CustomerSegments';
+import NiceAccountNumber from '../component/NiceAccountNumber/NiceAccountNumber';
 
 const router = createBrowserRouter([
   {

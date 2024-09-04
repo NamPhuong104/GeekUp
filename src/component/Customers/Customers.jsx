@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Input, Button, Row, Col, Table, Typography, Space, Modal, Tag, notification } from 'antd'; 
 import { SearchOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import Customer from '../component/entities/Customer'; 
-import CustomerDetail from './CustomerDetail'; 
+import Customer from '../../entities/Customer'; 
+import AddMultipleCustomerModal from './modal/AddMultipleCustomerModal'; 
 
 const { Title } = Typography;
 
@@ -221,7 +221,7 @@ const Customers = () => {
         scroll={{ x: 'max-content', y: 400 }} // Add horizontal and vertical scroll
       />
       
-      <CustomerDetail
+      <AddMultipleCustomerModal
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         onSave={handleSaveCustomer}

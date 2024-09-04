@@ -1,3 +1,4 @@
+/* CSS Reset */
 html,
 body,
 div,
@@ -86,6 +87,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -100,17 +102,25 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
+* {
+  font-family: 'Inconsolata', sans-serif !important; 
+}
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -118,6 +128,7 @@ q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -130,4 +141,21 @@ table {
 .ant-menu-item a {
   text-decoration: none; 
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 17px;
+}
+
+.logo-circle {
+  width: 35px; 
+  height: 35px; 
+  background-color: #daff3e; 
+  color: white;
+  border-radius: 50%; 
+  display: flex;
+}
+
 
