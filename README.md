@@ -71,9 +71,13 @@ yarn build
 
 ---
 
-### 5. The result runs in Local
+### 5. The result runs in local
 
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
+
+### 6. Run on production
+
+https://namphuong104-geekup-assessment.netlify.app/
