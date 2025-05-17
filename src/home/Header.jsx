@@ -1,70 +1,58 @@
-import React from 'react';
-import { Menu, Layout } from 'antd';
-import { UserOutlined, CrownOutlined, HeartOutlined } from '@ant-design/icons';
-import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
-import {
-  faBuildingColumns,
-  faMoneyCheck,
-} from '@fortawesome/free-solid-svg-icons';
+import { FileImageOutlined, UserOutlined } from "@ant-design/icons"
+import { Layout, Menu } from "antd"
+import { useEffect } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
-const { Sider } = Layout;
+const { Sider } = Layout
 
 const Sidebar = ({ collapsed }) => {
-  const location = useLocation();
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const albumDetailMatch = location.pathname.match(/^\/albums\/([^/]+)$/)
+    const userDetailMatch = location.pathname.match(/^\/users\/([^/]+)$/)
+
+    if (albumDetailMatch) {
+      document.title = `#${albumDetailMatch[1]} Show Album | Phuong`
+    } else if (userDetailMatch) {
+      document.title = `#${userDetailMatch[1]} Show User | Phuong`
+    } else if (location.pathname.startsWith("/albums")) {
+      document.title = "Albums | Phuong"
+    } else if (location.pathname.startsWith("/users")) {
+      document.title = "Users | Phuong"
+    }
+  }, [location.pathname])
 
   const getSelectedKey = () => {
-    switch (location.pathname) {
-      case '/customers':
-        return '1';
-      case '/bank-accounts':
-        return '2';
-      case '/cards':
-        return '3';
-      case '/customer-segments':
-        return '4';
-      case '/nice-accounts':
-        return '5';
-      case '/online-accounts':
-        return '6';
-      default:
-        return '1'; 
+    if (location.pathname.startsWith("/albums")) return "1"
+    if (location.pathname.startsWith("/users")) return "2"
+    return "1"
+  }
+
+  const menuItems = [
+    {
+      key: "1",
+      icon: <FileImageOutlined />,
+      label: <Link to="/albums">Albums</Link>
+    },
+    {
+      key: "2",
+      icon: <UserOutlined />,
+      label: <Link to="/users">Users</Link>
     }
-  };
+  ]
 
   return (
-    <Sider trigger={null} collapsible collapsed={collapsed}>
-      {/* <div className="demo-logo-vertical"></div> */}
-      <div className="logo-container">
-        <div className="logo-circle"></div>
+    <Sider trigger={null} collapsible collapsed={collapsed} theme="light">
+      <div className="logo-container" onClick={() => navigate("/albums")}>
+        <div className="logo-circle" style={{ padding: collapsed && 0 }}>
+          <img src="/geekup-logo.svg" alt="Logo GeekUp" style={{ objectFit: "cover" }} />
+        </div>
       </div>
-      <Menu
-        theme="dark"
-        mode="inline"
-        selectedKeys={[getSelectedKey()]} 
-      >
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          <Link to="/customers">Customers</Link>
-        </Menu.Item>
-        <Menu.Item key="2" icon={<FontAwesomeIcon icon={faBuildingColumns} />}>
-          <Link to="/bank-accounts">Bank Accounts</Link>
-        </Menu.Item>
-        <Menu.Item key="3" icon={<FontAwesomeIcon icon={faMoneyCheck} />}>
-          <Link to="/cards">Cards</Link>
-        </Menu.Item>
-        <Menu.Item key="4" icon={<CrownOutlined />}>
-          <Link to="/customer-segments">Segments</Link>
-        </Menu.Item>
-        <Menu.Item key="5" icon={<HeartOutlined />}>
-          <Link to="/nice-accounts">Nice accounts</Link>
-        </Menu.Item>
-        <Menu.Item key="6" icon={<FontAwesomeIcon icon={faAddressCard} />}>
-          <Link to="/online-accounts">Online accounts</Link>
-        </Menu.Item>
-      </Menu>
+      <Menu mode="inline" selectedKeys={[getSelectedKey()]} key={getSelectedKey()} items={menuItems} />
     </Sider>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

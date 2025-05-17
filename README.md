@@ -1,51 +1,79 @@
-# 📘 vite-plugin-react-pages
+## Overview
 
-<p>
-  <a href="https://www.npmjs.com/package/vite-plugin-react-pages" target="_blank" rel="noopener"><img src="https://img.shields.io/npm/v/vite-plugin-react-pages.svg" alt="npm package" /></a>
-</p>
+This project is a web application built with **React** and uses **Ant Design** for UI components.
 
-[vite-plugin-react-pages](https://vitejs.github.io/vite-plugin-react-pages) (vite-pages) is a React app framework powered by [vite](https://github.com/vitejs/vite). It is very suitable for:
+## Libraries & Tools Used
 
-- blog site
-- documentation site for your library or product
-- stories/demos/playgrounds for your React components or libraries (like [storybook.js](https://storybook.js.org/))
+- **React**: Main JavaScript library for building user interfaces.
+- **Ant Design**: Provides a rich set of UI components for fast and beautiful development.
+- **Axios**: For making HTTP requests to APIs.
+- **React Router DOM**: For client-side routing.
+- **Other tools**: Prettier, etc. for code quality and formatting.
 
-It provides many features that help developers **build a React App quickly**:
+**Why these tools?**
 
-- **Fantastic development experience**. Start the local development server in a blink, even when you have many pages. Hot module replacement works with React and Mdx, so you can get instant feedback when you edit your code.
-- **Filesystem based routing**. By following a [simple filesystem routing convention](https://vitejs.github.io/vite-plugin-react-pages/fs-routing), It is easy to create, locate and develop pages. You don't need to worry about routing configuration. For advanced users, you can [tell vite-pages how to find page files](https://vitejs.github.io/vite-plugin-react-pages/advanced-fs-routing), so that vite-pages can work with any project file structure.
-- **Support Mdx**. You can write content with either "normal React" or [Mdx](https://mdxjs.com/). Normal Reactjs is more flexible and composable. While Mdx is more readable and easier to edit. You can choose the proper format for your task. These formats can import each other like normal esModules.
-- **Powerful [theme customization](https://vitejs.github.io/vite-plugin-react-pages/theme-customization)**. Vite-pages itself doesn't render any concrete DOM node. You can customize **anything** on the page with theme. It is easy to write a theme that is sharable and configurable. If you use typescript, the users of your theme will get type-check and intelliSense.
-- **Automatic code splitting based on pages**. Visitors don't need to download the whole app, they only load page data as needed.
-- **Support static site generation out of the box**. By pre-rendering your app into HTML at buildtime, users can see the content before any JS is loaded. With this feature, you can [deploy your single page apps on GitHub Pages](https://github.com/vitejs/vite-plugin-react-pages/tree/main/doc-site)(which [doesn't natively support single page apps](https://www.google.com/search?q=github+pages+single+page+apps&oq=github+pages+single+page+apps)).
-- **Tools for Library documentation**. Vite-pages provides [some tools](https://vitejs.github.io/vite-plugin-react-pages/library-documentation-tools) to reduce the maintenance costs for library authors and make their documents more easily to read.
+- **React** is widely adopted, component-based, and easy to maintain.
+- **Ant Design** offers a modern, consistent, and customizable UI.
 
-## Translation of this README
+## Project Structure
 
-- [Simplified Chinese (中文)](/README-CN.md)
+```
+src/
+  ├── component/      # React components (Albums, Users)
+  ├── global/         # Shared components (ActionButtons)
+  ├── home/           # Layout and navigation (Sidebar, Header)
+  ├── layout/         # Main layout components
+  ├── page/           # Page-level components (Loading)
+  ├── plugin/         # Axios and other plugins
+  └── App.js          # Main app entry
+```
 
-## Getting stated
+## How to Set Up & Start the Project
 
-### Try it online on StackBlitz
+### 1. Clone the repository
 
-You can play with these demo projects in your browser, without installing anything on your machine.
+```bash
+git clone <your-repo-url>
+cd TNB24_ApiServices_Client
+```
 
-- [app demo](https://stackblitz.com/fork/github/vitejs/vite-plugin-react-pages/tree/main/packages/create-project/template-app?file=README.md&terminal=dev)
-- [library demo](https://stackblitz.com/fork/github/vitejs/vite-plugin-react-pages/tree/main/packages/create-project/template-lib?file=README.md&terminal=dev)
-- [library monorepo demo](https://stackblitz.com/fork/github/vitejs/vite-plugin-react-pages/tree/main/packages/create-project/template-lib-monorepo?file=README.md&terminal=dev)
+### 2. Install dependencies
 
-### Initialize a demo project locally
+```bash
+npm install
+# or
+yarn install
+```
 
-1. Initialize a vite-pages project (with npm 7+):
-   - execute `npm init vite-pages app-demo -- --template app` to initialize an app project, or
-   - execute `npm init vite-pages library-demo -- --template lib` to initialize a library project, or
-   - execute `npm init vite-pages library-monorepo-demo -- --template lib-monorepo` to initialize a library project with monorepo setup.
-   - If you are using **npm 6.x**, the extra double-dash before `--template` should be deleted. For example, `npm init vite-pages app-demo --template app`.
-2. `npm install`
-3. `npm run dev` and play with the local dev environment.
-4. `npm run build`.
-5. `npm run ssr`. You can [disable javascript in your browser](https://developer.chrome.com/docs/devtools/javascript/disable/), to verify if it can still render.
+### 3. Start the development server
 
-### Read the documentation
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-Read [the documentation of vite-plugin-react-pages](https://vitejs.github.io/vite-plugin-react-pages/).
+The app will be available at [http://localhost:5173](http://localhost:5173) (or the port specified in your config).
+
+### 4. Build for production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+## Submission
+
+- **Include**: Source code (excluding `node_modules`, `vendor`, `.git`, built, and minified files).
+- **Compress**: The project folder into a `.zip` file.
+- **README.md**: This file describes setup and your approach.
+
+---
+
+### 5. The result runs in Local
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)

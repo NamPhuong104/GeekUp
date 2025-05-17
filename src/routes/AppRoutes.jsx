@@ -1,55 +1,39 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LayoutComponent from '../layout/Layout';
-import Customers from '../component/Customers/Customers';
-import BankAccounts from '../component/BankAccounts/BankAccounts';
-import OnlineAccounts from '../component/OnlineAccounts/OnlineAccounts';
-import Cards from '../component/Cards/Cards';
-//import BankAccounts from '../page/BankAccounts';
-//import Cards from '../page/Cards';
-//import CustomerSegments from '../page/CustomerSegments';
-import CustomerSegments from '../component/CustomerSegments/CustomerSegments';
-import NiceAccountNumber from '../component/NiceAccountNumber/NiceAccountNumber';
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Albums from "../component/Albums/Albums"
+import AlbumDetail from "../component/Albums/Detail/AlbumDetail"
+import UserDetail from "../component/Users/Detail/UserDetail"
+import Users from "../component/Users/Users"
+import LayoutComponent from "../layout/Layout"
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <LayoutComponent />,
     children: [
       {
         index: true,
-        path: 'customers',
-        element: <Customers />,
+        element: <Albums />
       },
       {
-        path: 'bank-accounts',
-        element: <BankAccounts />,
+        path: "albums",
+        element: <Albums />
       },
+      { path: "albums/:id", element: <AlbumDetail /> },
       {
-        path: 'cards',
-        element: <Cards />,
+        path: "users",
+        element: <Users />
       },
+      { path: "users/:id", element: <UserDetail /> },
       {
-        path: 'customer-segments',
-        element: <CustomerSegments />,
-      },
-      {
-        path: 'online-accounts',
-        element: <OnlineAccounts />,
-      },
-      {
-        path: 'nice-accounts',
-        element: <NiceAccountNumber />,
-      },
-      {
-        path: '*',
-        element: <div>404 Not Found</div>,
-      },
-    ],
-  },
-]);
+        path: "*",
+        element: <div>404 Not Found</div>
+      }
+    ]
+  }
+])
 
 const AppRouter = () => {
-  return <RouterProvider router={router} />;
-};
+  return <RouterProvider router={router} />
+}
 
-export default AppRouter;
+export default AppRouter

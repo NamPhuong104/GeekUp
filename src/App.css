@@ -108,7 +108,7 @@ body {
 }
 
 * {
-  font-family: 'Inconsolata', sans-serif !important; 
+  font-family: "Inconsolata", sans-serif !important;
 }
 
 ol,
@@ -125,7 +125,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -135,27 +135,33 @@ table {
 }
 
 .ant-menu {
-  margin-top: 16px; 
+  margin-top: 16px;
 }
 
 .ant-menu-item a {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 17px;
+  background-color: #ffffff;
+  width: 100%;
+  height: auto;
+}
+.logo-container:hover {
+  cursor: pointer;
 }
 
 .logo-circle {
-  width: 35px; 
-  height: 35px; 
-  background-color: #daff3e; 
-  color: white;
-  border-radius: 50%; 
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  width: 200px;
+  height: 64px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
 }
-
-

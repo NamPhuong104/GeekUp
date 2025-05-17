@@ -1,87 +1,35 @@
-import { Button, Col, Popconfirm, Row, Tooltip } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faEye,
-  faPenToSquare,
-  faTrashCan,
-} from '@fortawesome/free-regular-svg-icons';
+import { faEye } from "@fortawesome/free-regular-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Button, Col, Row, Tooltip } from "antd"
 
 function ActionButtons(props) {
-  const { record, handleViewModal, handleUpdateModal, handleDeleteRecord } =
-    props;
+  const { record, handleViewModal } = props
   return (
-    <Row justify={'space-evenly'}>
+    <Row justify={"space-evenly"}>
       {handleViewModal ? (
         <Col>
           <Tooltip title="Xem" placement="bottom">
             <Button
               className="action-buttons"
               type="default"
-              size={'small'}
+              size={"small"}
               style={{
-                background: 'transparent',
-                borderColor: 'transparent',
-                color: '#448026',
+                background: "transparent",
+                borderColor: "transparent",
+                color: "#448026"
               }}
               icon={<FontAwesomeIcon icon={faEye} />}
               onClick={handleViewModal}
-            />
-          </Tooltip>
-        </Col>
-      ) : (
-        <></>
-      )}
-
-      {handleUpdateModal ? (
-        <Col>
-          <Tooltip title="Cập nhật" placement="bottom">
-            <Button
-              className="action-buttons"
-              type="default"
-              size={'small'}
-              style={{
-                background: 'transparent',
-                borderColor: 'transparent',
-                color: '#e3ba5b',
-              }}
-              icon={<FontAwesomeIcon icon={faPenToSquare} />}
-              onClick={handleUpdateModal}
-            />
-          </Tooltip>
-        </Col>
-      ) : (
-        <></>
-      )}
-
-      {handleDeleteRecord ? (
-        <Col>
-          <Tooltip title="Xóa" placement="bottom">
-            <Popconfirm
-              title="Bạn có chắc chắn muốn xóa ?"
-              onConfirm={handleDeleteRecord}
-              okText="Đồng ý"
-              cancelText="Hủy"
-              placement="left"
             >
-              <Button
-                className="action-buttons"
-                type="default"
-                size={'small'}
-                style={{
-                  background: 'transparent',
-                  borderColor: 'transparent',
-                  color: 'red',
-                }}
-                icon={<FontAwesomeIcon icon={faTrashCan} />}
-              />
-            </Popconfirm>
+              Show
+            </Button>
           </Tooltip>
         </Col>
       ) : (
         <></>
       )}
     </Row>
-  );
+  )
 }
 
-export default ActionButtons;
+export default ActionButtons
