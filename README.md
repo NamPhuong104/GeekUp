@@ -33,8 +33,8 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd TNB24_ApiServices_Client
+git clone https://github.com/NamPhuong104/GeekUp.git
+cd GeekUp
 ```
 
 ### 2. Install dependencies
